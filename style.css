@@ -1,0 +1,262 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Plus Jakarta Sans", "Segoe UI", Arial, sans-serif;
+  background: #f2f3f2;
+  color: #10231c;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+/* Kartu putih utama (lebar 441px, tinggi 699px sesuai desain) */
+.card {
+  position: relative;
+  width: 441px;
+  max-width: 100%;
+  min-height: 699px;
+  background: #fff;
+  border-top-right-radius: 28px;
+  padding: 150px 73px 0 70px;
+}
+
+.form-wrap { width: 100%; }
+
+.greeting {
+  font-size: 11px;
+  font-weight: 500;
+  color: #2f6b57;
+  margin-bottom: 6px;
+}
+
+h1 {
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  line-height: 1.2;
+  color: #10231c;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  font-size: 10.5px;
+  color: #7b8580;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #10231c;
+  margin-bottom: 8px;
+}
+
+.field {
+  position: relative;
+  height: 37px;
+  margin-bottom: 17px;
+}
+.field + label { margin-top: 0; }
+
+.field input {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #e4e7e5;
+  background: #fafbfa;
+  border-radius: 10px;
+  padding: 0 38px 0 34px;
+  font-family: inherit;
+  font-size: 10.5px;
+  color: #10231c;
+  outline: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+.field input::placeholder { color: #a5aca8; }
+.field input:focus {
+  border-color: #2f705a;
+  box-shadow: 0 0 0 3px rgba(47,112,90,.12);
+}
+
+.field .icon-left,
+.field .icon-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 13px;
+  height: 13px;
+  stroke: #6f7873;
+  fill: none;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.field .icon-left { left: 14px; }
+.field .icon-right { right: 14px; cursor: pointer; background: none; border: 0; }
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1px;
+  margin-bottom: 21px;
+}
+
+.remember {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 10.5px;
+  font-weight: 500;
+  color: #3a4640;
+  cursor: pointer;
+  margin: 0;
+}
+.remember input {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 13px;
+  height: 13px;
+  border: 1px solid #8d9792;
+  border-radius: 3px;
+  background: #fff;
+  cursor: pointer;
+  position: relative;
+}
+.remember input:checked { background: #2f705a; border-color: #2f705a; }
+.remember input:checked::after {
+  content: "";
+  position: absolute;
+  left: 3.5px; top: 0.5px;
+  width: 3px; height: 7px;
+  border: solid #fff;
+  border-width: 0 1.5px 1.5px 0;
+  transform: rotate(45deg);
+}
+
+.forgot {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #1f5a47;
+  text-decoration: none;
+}
+.forgot:hover { text-decoration: underline; }
+
+.btn-primary {
+  width: 100%;
+  height: 37px;
+  border: 0;
+  border-radius: 9px;
+  background: #2f705a;
+  color: #fff;
+  font-family: inherit;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: -0.1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  cursor: pointer;
+  transition: background .15s;
+}
+.btn-primary:hover { background: #275f4c; }
+.btn-primary svg {
+  width: 11px; height: 11px;
+  stroke: #fff; fill: none; stroke-width: 1.8;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 17px 0 18px;
+  font-size: 8.5px;
+  color: #8d9792;
+}
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #e6e9e7;
+}
+
+.btn-secondary {
+  width: 100%;
+  height: 34px;
+  border: 1px solid #dfe3e1;
+  background: #fff;
+  border-radius: 9px;
+  font-family: inherit;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #10231c;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background .15s;
+}
+.btn-secondary:hover { background: #f6f8f7; }
+
+.footer {
+  position: absolute;
+  left: 0; right: 0;
+  bottom: 36px;
+  text-align: center;
+  font-size: 7.5px;
+  color: #8d9792;
+  padding: 0 20px;
+}
+.footer a {
+  color: #6a746f;
+  text-decoration: underline;
+}
+
+
+.brand {
+  position: absolute;
+  top: 19px;
+  left: 19px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+  background: #2f705a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 18px rgba(47, 112, 90, .28);
+}
+.brand-logo svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.brand-text h2 {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  line-height: 1.25;
+  color: #10231c;
+}
+.brand-text p {
+  font-size: 9.5px;
+  color: #7b8580;
+  line-height: 1.4;
+}

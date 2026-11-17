@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Masuk ke akun Anda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="card">
+    <header class="brand">
+      <div class="brand-logo">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 3l7.5 4.3v8.4L12 20l-7.5-4.3V7.3L12 3z"/>
+          <path d="M8.8 11.8l2.3 2.3 4.1-4.3"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <h2>RuangKita</h2>
+        <p>Portal akun terintegrasi</p>
+      </div>
+    </header>
+
+    <div class="form-wrap">
+      <p class="greeting">Selamat datang kembali</p>
+      <h1>Masuk ke akun Anda</h1>
+      <p class="subtitle">Silakan masukkan detail akun Anda untuk melanjutkan.</p>
+
+      <form onsubmit="return false;">
+        <label for="username">Username</label>
+        <div class="field">
+          <svg class="icon-left" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          <input type="text" id="username" placeholder="Masukkan username" autocomplete="username">
+        </div>
+
+        <label for="password">Password</label>
+        <div class="field">
+          <svg class="icon-left" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+          <input type="password" id="password" placeholder="Masukkan password" autocomplete="current-password">
+          <svg class="icon-right" id="togglePw" viewBox="0 0 24 24" role="button" aria-label="Tampilkan password"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+
+        <div class="row">
+          <label class="remember"><input type="checkbox"> Ingat saya</label>
+          <a href="#" class="forgot">Lupa password?</a>
+        </div>
+
+        <button type="submit" class="btn-primary">
+          Masuk ke akun
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </form>
+
+      <div class="divider">Belum punya akun?</div>
+
+      <a href="#" class="btn-secondary">Daftar akun baru</a>
+    </div>
+
+    <p class="footer">
+      Dengan masuk, Anda menyetujui <a href="#">Ketentuan Layanan</a> dan <a href="#">Kebijakan Privasi</a>.
+    </p>
+  </main>
+
+  <script>
+    var pw = document.getElementById('password');
+    document.getElementById('togglePw').addEventListener('click', function () {
+      pw.type = pw.type === 'password' ? 'text' : 'password';
+    });
+  </script>
+</body>
+</html>
