@@ -1,74 +1,347 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Masuk ke akun Anda</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SIPENTU - Sistem Informasi Pengumpulan Tugas SMK Negeri">
+  <title>SIPENTU - Sistem Informasi Pengumpulan Tugas</title>
+
+  <!-- Tema dibaca sebelum CSS agar halaman tidak berkedip saat dimuat. -->
+  <script>
+    (function () {
+      try {
+        const pilihan = localStorage.getItem("sipentu-tema");
+        const sistemGelap = window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.setAttribute(
+          "data-theme",
+          pilihan || (sistemGelap ? "dark" : "light")
+        );
+      } catch (error) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="card">
-    <header class="brand">
-      <div class="brand-logo">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 3l7.5 4.3v8.4L12 20l-7.5-4.3V7.3L12 3z"/>
-          <path d="M8.8 11.8l2.3 2.3 4.1-4.3"/>
+
+  <!-- HALAMAN LOGIN -->
+  <section id="login" class="layar layar-auth">
+    <div class="auth-brand">
+      <button class="tombol-tema" type="button" data-theme-toggle
+        aria-label="Ganti ke tema gelap" title="Ganti tema">
+        <svg class="ikon-matahari" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>
         </svg>
+        <svg class="ikon-bulan" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20.5 15.5A8.5 8.5 0 0 1 8.5 3.5 8.5 8.5 0 1 0 20.5 15.5Z"></path>
+        </svg>
+      </button>
+      <div class="auth-brand-inner">
+        <div class="logo-mark">S</div>
+        <p class="nama-aplikasi">SIPENTU</p>
       </div>
-      <div class="brand-text">
-        <h2>RuangKita</h2>
-        <p>Portal akun terintegrasi</p>
-      </div>
-    </header>
-
-    <div class="form-wrap">
-      <p class="greeting">Selamat datang kembali</p>
-      <h1>Masuk ke akun Anda</h1>
-      <p class="subtitle">Silakan masukkan detail akun Anda untuk melanjutkan.</p>
-
-      <form onsubmit="return false;">
-        <label for="username">Username</label>
-        <div class="field">
-          <svg class="icon-left" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-          <input type="text" id="username" placeholder="Masukkan username" autocomplete="username">
-        </div>
-
-        <label for="password">Password</label>
-        <div class="field">
-          <svg class="icon-left" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
-          <input type="password" id="password" placeholder="Masukkan password" autocomplete="current-password">
-          <svg class="icon-right" id="togglePw" viewBox="0 0 24 24" role="button" aria-label="Tampilkan password"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
-        </div>
-
-        <div class="row">
-          <label class="remember"><input type="checkbox"> Ingat saya</label>
-          <a href="#" class="forgot">Lupa password?</a>
-        </div>
-
-        <button type="submit" class="btn-primary">
-          Masuk ke akun
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </button>
-      </form>
-
-      <div class="divider">Belum punya akun?</div>
-
-      <a href="#" class="btn-secondary">Daftar akun baru</a>
     </div>
 
-    <p class="footer">
-      Dengan masuk, Anda menyetujui <a href="#">Ketentuan Layanan</a> dan <a href="#">Kebijakan Privasi</a>.
-    </p>
-  </main>
+    <main class="auth-form-area">
+      <div class="auth-card">
+        <p class="eyebrow">SELAMAT DATANG KEMBALI</p>
+        <h2>Masuk ke SIPENTU</h2>
+        <p class="teks-redup">Gunakan akun yang sudah terdaftar untuk melanjutkan.</p>
+        <form action="#siswa" method="get">
+          <div class="field">
+            <label for="login-username">Nama pengguna</label>
+            <input id="login-username" name="username" type="text" placeholder="Contoh: andi_saputra"
+              autocomplete="username" required>
+          </div>
+          <div class="field">
+            <label for="login-password">Kata sandi</label>
+            <div class="password-wrap">
+              <input id="login-password" name="password" type="password" placeholder="Masukkan kata sandi"
+                autocomplete="current-password" required>
+              <button class="lihat-sandi" type="button" data-password-toggle
+                aria-controls="login-password" aria-pressed="false">Lihat</button>
+            </div>
+          </div>
+          <button class="tombol tombol-utama tombol-lebar" type="submit">Masuk</button>
+        </form>
+        <p class="teks-daftar">Belum memiliki akun? <a href="#registrasi">Daftar sekarang</a></p>
+        <!-- Contoh pesan error: tampilkan dengan menghapus atribut hidden.
+        <div class="pesan pesan-bahaya" role="alert">
+          Nama pengguna atau kata sandi salah. Periksa kembali data akun Anda.
+        </div>
+        -->
+      </div>
+    </main>
+  </section>
 
+  <!-- HALAMAN REGISTRASI -->
+  <section id="registrasi" class="layar layar-registrasi">
+    <header class="auth-topbar">
+      <a class="brand-mini" href="#login"><span class="logo-mini">S</span>SIPENTU</a>
+      <button class="tombol-tema" type="button" data-theme-toggle aria-label="Ganti ke tema gelap" title="Ganti tema">
+        <svg class="ikon-matahari" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path></svg>
+        <svg class="ikon-bulan" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 15.5A8.5 8.5 0 0 1 8.5 3.5 8.5 8.5 0 1 0 20.5 15.5Z"></path></svg>
+      </button>
+    </header>
+    <main class="registrasi-wrap">
+      <div class="auth-card kartu-registrasi">
+        <p class="eyebrow">BUAT AKUN BARU</p>
+        <h1>Daftar SIPENTU</h1>
+        <p class="teks-redup">Pilih peran dan lengkapi data diri Anda.</p>
+        <form action="#login" method="get">
+          <fieldset class="pilihan-peran">
+            <legend>Daftar sebagai</legend>
+            <div class="peran-grid">
+              <label class="opsi-peran" for="reg-siswa">
+                <input id="reg-siswa" type="radio" name="peran" value="siswa" checked>
+                <span class="opsi-ikon">▣</span><span><strong>Siswa</strong><small>Peserta didik</small></span>
+              </label>
+              <label class="opsi-peran" for="reg-guru">
+                <input id="reg-guru" type="radio" name="peran" value="guru">
+                <span class="opsi-ikon">▤</span><span><strong>Guru</strong><small>Tenaga pendidik</small></span>
+              </label>
+            </div>
+          </fieldset>
+          <!-- Data siswa dan guru ditampilkan murni dengan CSS :has(). -->
+          <div class="field field-siswa">
+            <label for="reg-nis">Nomor Induk Siswa (NIS)</label>
+            <input id="reg-nis" name="nis" type="text" placeholder="Contoh: 10245" autocomplete="off">
+          </div>
+          <div class="field field-siswa">
+            <label for="reg-kelas">Kelas</label>
+            <select id="reg-kelas" name="kelas">
+              <option value="">Pilih kelas</option><option>X TKJ 1</option><option>X TKJ 2</option>
+              <option>XI TKJ 1</option><option>XI TKJ 2</option><option>XII TKJ 1</option>
+            </select>
+          </div>
+          <div class="field field-guru">
+            <label for="reg-nip">Nomor Induk Pegawai (NIP)</label>
+            <input id="reg-nip" name="nip" type="text" placeholder="Masukkan NIP" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="reg-nama">Nama lengkap</label>
+            <input id="reg-nama" name="nama" type="text" placeholder="Nama sesuai identitas" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="reg-username">Nama pengguna</label>
+            <input id="reg-username" name="username" type="text" placeholder="Buat nama pengguna" autocomplete="username" required>
+          </div>
+          <div class="field">
+            <label for="reg-password">Kata sandi</label>
+            <input id="reg-password" name="password" type="password" minlength="8"
+              pattern="(?=.*[A-Za-z])(?=.*[0-9]).{8,}" placeholder="Minimal 8 karakter"
+              autocomplete="new-password" required>
+            <small class="bantuan">Gunakan minimal 8 karakter yang terdiri dari huruf dan angka.</small>
+          </div>
+          <div class="field">
+            <label for="reg-ulangi">Ulangi kata sandi</label>
+            <input id="reg-ulangi" name="ulangi" type="password" minlength="8"
+              placeholder="Masukkan kembali kata sandi" autocomplete="new-password" required>
+          </div>
+          <div class="pesan pesan-info">Pendaftaran akun akan menunggu persetujuan admin sebelum dapat digunakan.</div>
+          <button class="tombol tombol-utama tombol-lebar" type="submit">Kirim pendaftaran</button>
+        </form>
+        <p class="teks-daftar">Sudah memiliki akun? <a href="#login">Kembali masuk</a></p>
+      </div>
+    </main>
+  </section>
+
+  <!-- DASHBOARD SISWA -->
+  <section id="siswa" class="layar layar-aplikasi peran-siswa">
+    <aside class="sidebar">
+      <a href="#siswa" class="brand-sidebar"><span class="logo-mini">S</span><span>SIPENTU<small>Portal siswa</small></span></a>
+      <nav class="menu-samping" aria-label="Menu siswa">
+        <a class="aktif" href="#siswa">▦ <span>Dashboard</span></a>
+        <a href="#siswa-riwayat">◷ <span>Riwayat tugas</span></a>
+        <a href="#siswa-notifikasi">♧ <span>Notifikasi</span><b class="angka-notif">2</b></a>
+        <a href="#siswa-sandi">⚙ <span>Ubah kata sandi</span></a>
+        <a href="#login" class="menu-keluar">↪ <span>Keluar</span></a>
+      </nav>
+      <div class="sidebar-bawah">
+        <button class="tombol-tema" type="button" data-theme-toggle aria-label="Ganti ke tema gelap" title="Ganti tema">
+          <svg class="ikon-matahari" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path></svg>
+          <svg class="ikon-bulan" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 15.5A8.5 8.5 0 0 1 8.5 3.5 8.5 8.5 0 1 0 20.5 15.5Z"></path></svg>
+        </button>
+        <div class="profil-mini"><span class="avatar">AS</span><span><strong>Andi Saputra</strong><small>X TKJ 1</small></span></div>
+      </div>
+    </aside>
+    <main class="konten">
+      <header class="header-konten"><div><p class="eyebrow">DASHBOARD SISWA</p><h1>Selamat pagi, Andi! 👋</h1><p class="teks-redup">Berikut ringkasan aktivitas tugas Anda hari ini.</p></div><span class="tanggal">Rabu, 18 November 2026</span></header>
+      <div class="stat-grid">
+        <article class="stat-card"><span class="stat-icon">▤</span><p>Total tugas</p><strong>12</strong><small>Semester ini</small></article>
+        <article class="stat-card"><span class="stat-icon hijau">✓</span><p>Sudah dikumpulkan</p><strong>8</strong><small>67% dari total tugas</small></article>
+        <article class="stat-card"><span class="stat-icon kuning">◷</span><p>Belum dikumpulkan</p><strong>4</strong><small>Periksa tenggat waktu</small></article>
+      </div>
+      <section class="panel">
+        <div class="panel-heading"><div><h2>Tugas aktif</h2><p class="teks-redup">Selesaikan tugas sebelum batas pengumpulan.</p></div><a href="#siswa">Lihat semua →</a></div>
+        <div class="tabel-wrap"><table><thead><tr><th>Nama tugas</th><th>Mata pelajaran</th><th>Tenggat</th><th>Status</th><th>Aksi</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Nama tugas"><strong>Konfigurasi jaringan LAN</strong><small>Praktik · Tugas individu</small></td><td data-label="Mata pelajaran">Administrasi Jaringan</td><td data-label="Tenggat">20 Nov 2026</td><td data-label="Status"><span class="badge badge-belum">Belum</span></td><td data-label="Aksi"><a class="tombol tombol-kecil tombol-aksen" href="#login">Kumpulkan</a></td></tr>
+            <tr><td data-label="Nama tugas"><strong>Rangkuman sistem operasi</strong><small>Materi bab 3</small></td><td data-label="Mata pelajaran">Sistem Operasi</td><td data-label="Tenggat">19 Nov 2026</td><td data-label="Status"><span class="badge badge-sudah">Sudah</span></td><td data-label="Aksi"><a class="tombol tombol-kecil tombol-netral" href="#login">Lihat</a></td></tr>
+            <tr><td data-label="Nama tugas"><strong>Laporan instalasi Windows</strong><small>Praktik · Laporan</small></td><td data-label="Mata pelajaran">Komputer dan Jaringan</td><td data-label="Tenggat">16 Nov 2026</td><td data-label="Status"><span class="badge badge-terlambat">Terlambat</span></td><td data-label="Aksi"><a class="tombol tombol-kecil tombol-aksen" href="#login">Kumpulkan</a></td></tr>
+            <tr><td data-label="Nama tugas"><strong>Topologi jaringan sekolah</strong><small>Revisi diagram</small></td><td data-label="Mata pelajaran">Teknologi Jaringan</td><td data-label="Tenggat">21 Nov 2026</td><td data-label="Status"><span class="badge badge-revisi">Perlu diperbaiki</span></td><td data-label="Aksi"><a class="tombol tombol-kecil tombol-netral" href="#login">Lihat</a></td></tr>
+          </tbody>
+        </table></div>
+      </section>
+    </main>
+  </section>
+
+  <!-- DASHBOARD GURU -->
+  <section id="guru" class="layar layar-aplikasi peran-guru">
+    <aside class="sidebar">
+      <a href="#guru" class="brand-sidebar"><span class="logo-mini">S</span><span>SIPENTU<small>Portal guru</small></span></a>
+      <nav class="menu-samping" aria-label="Menu guru">
+        <a class="aktif" href="#guru">▦ <span>Dashboard</span></a><a href="#guru">▤ <span>Kelola tugas</span></a>
+        <a href="#guru">⇧ <span>Daftar pengumpulan</span></a><a href="#guru">▥ <span>Rekapitulasi</span></a>
+        <a href="#guru">⚙ <span>Ubah kata sandi</span></a><a href="#login" class="menu-keluar">↪ <span>Keluar</span></a>
+      </nav>
+      <div class="sidebar-bawah">
+        <button class="tombol-tema" type="button" data-theme-toggle aria-label="Ganti ke tema gelap" title="Ganti tema">
+          <svg class="ikon-matahari" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path></svg>
+          <svg class="ikon-bulan" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 15.5A8.5 8.5 0 0 1 8.5 3.5 8.5 8.5 0 1 0 20.5 15.5Z"></path></svg>
+        </button>
+        <div class="profil-mini"><span class="avatar">DP</span><span><strong>Dewi Puspitasari</strong><small>Guru Informatika</small></span></div>
+      </div>
+    </aside>
+    <main class="konten">
+      <header class="header-konten"><div><p class="eyebrow">DASHBOARD GURU</p><h1>Selamat datang, Bu Dewi!</h1><p class="teks-redup">Kelola tugas dan pantau pengumpulan siswa Anda.</p></div><a href="#guru" class="tombol tombol-utama">＋ Buat tugas baru</a></header>
+      <div class="stat-grid">
+        <article class="stat-card"><span class="stat-icon">▤</span><p>Tugas dibuat</p><strong>18</strong><small>Semester ini</small></article>
+        <article class="stat-card"><span class="stat-icon hijau">✓</span><p>Pengumpulan masuk</p><strong>146</strong><small>Dari seluruh kelas</small></article>
+        <article class="stat-card"><span class="stat-icon kuning">◷</span><p>Perlu diperiksa</p><strong>23</strong><small>Menunggu penilaian</small></article>
+      </div>
+      <section class="panel">
+        <div class="panel-heading"><div><h2>Tugas terbaru</h2><p class="teks-redup">Ringkasan tugas yang Anda berikan.</p></div><a href="#guru">Kelola tugas →</a></div>
+        <div class="tabel-wrap"><table><thead><tr><th>Nama tugas</th><th>Kelas</th><th>Tenggat</th><th>Terkumpul</th><th>Status</th><th>Aksi</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Nama tugas"><strong>Praktik konfigurasi IP</strong><small>Administrasi Jaringan</small></td><td data-label="Kelas">XI TKJ 1</td><td data-label="Tenggat">22 Nov 2026</td><td data-label="Terkumpul">28/32 siswa</td><td data-label="Status"><span class="badge badge-aktif">Aktif</span></td><td data-label="Aksi"><a class="tombol tombol-kecil tombol-netral" href="#guru">Lihat</a></td></tr>
+            <tr><td data-label="Nama tugas"><strong>Dasar sistem operasi</strong><small>Sistem Operasi</small></td><td data-label="Kelas">X TKJ 1</td><td data-label="Tenggat">19 Nov 2026</td><td data-label="Terkumpul">30/34 siswa</td><td data-label="Status"><span class="badge badge-aktif">Aktif</span></td><td data-label="Aksi"><a class="tombol tombol-kecil tombol-netral" href="#guru">Lihat</a></td></tr>
+            <tr><td data-label="Nama tugas"><strong>Perakitan komputer</strong><small>Komputer dan Jaringan</small></td><td data-label="Kelas">X TKJ 2</td><td data-label="Tenggat">14 Nov 2026</td><td data-label="Terkumpul">32/32 siswa</td><td data-label="Status"><span class="badge badge-sudah">Selesai</span></td><td data-label="Aksi"><a class="tombol tombol-kecil tombol-netral" href="#guru">Rekap</a></td></tr>
+          </tbody>
+        </table></div>
+      </section>
+    </main>
+  </section>
+
+  <!-- DASHBOARD ADMIN -->
+  <section id="admin" class="layar layar-aplikasi peran-admin">
+    <aside class="sidebar">
+      <a href="#admin" class="brand-sidebar"><span class="logo-mini">S</span><span>SIPENTU<small>Panel administrator</small></span></a>
+      <nav class="menu-samping" aria-label="Menu admin">
+        <a class="aktif" href="#admin">▦ <span>Dashboard</span></a><a href="#pengguna">♙ <span>Kelola pengguna</span></a>
+        <a href="#admin">⚙ <span>Ubah kata sandi</span></a><a href="#login" class="menu-keluar">↪ <span>Keluar</span></a>
+      </nav>
+      <div class="sidebar-bawah">
+        <button class="tombol-tema" type="button" data-theme-toggle aria-label="Ganti ke tema gelap" title="Ganti tema">
+          <svg class="ikon-matahari" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path></svg>
+          <svg class="ikon-bulan" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 15.5A8.5 8.5 0 0 1 8.5 3.5 8.5 8.5 0 1 0 20.5 15.5Z"></path></svg>
+        </button>
+        <div class="profil-mini"><span class="avatar">RA</span><span><strong>Rizky Ananda</strong><small>Administrator</small></span></div>
+      </div>
+    </aside>
+    <main class="konten">
+      <header class="header-konten"><div><p class="eyebrow">PANEL ADMINISTRATOR</p><h1>Ringkasan sistem</h1><p class="teks-redup">Kelola akun dan persetujuan pengguna SIPENTU.</p></div><a href="#pengguna" class="tombol tombol-utama">Kelola pengguna</a></header>
+      <div class="stat-grid">
+        <article class="stat-card"><span class="stat-icon">♙</span><p>Total guru</p><strong>24</strong><small>Akun terdaftar</small></article>
+        <article class="stat-card"><span class="stat-icon hijau">♧</span><p>Total siswa</p><strong>486</strong><small>Akun terdaftar</small></article>
+        <article class="stat-card"><span class="stat-icon kuning">◷</span><p>Akun menunggu</p><strong>7</strong><small>Perlu persetujuan</small></article>
+      </div>
+      <section class="panel">
+        <div class="panel-heading"><div><h2>Pendaftaran menunggu persetujuan</h2><p class="teks-redup">Periksa informasi pendaftar sebelum menyetujui akun.</p></div><span class="badge badge-menunggu">7 menunggu</span></div>
+        <div class="tabel-wrap"><table><thead><tr><th>Nama lengkap</th><th>Nama pengguna</th><th>Peran</th><th>Tanggal daftar</th><th>Aksi</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Nama lengkap"><strong>Fajar Ramadhan</strong><small>NIS: 10246 · X TKJ 1</small></td><td data-label="Nama pengguna">fajar.r</td><td data-label="Peran"><span class="badge badge-siswa">Siswa</span></td><td data-label="Tanggal daftar">18 Nov 2026</td><td data-label="Aksi" class="aksi-tabel"><button class="tombol tombol-kecil tombol-setuju" type="button">Setujui</button><button class="tombol tombol-kecil tombol-tolak" type="button">Tolak</button></td></tr>
+            <tr><td data-label="Nama lengkap"><strong>Nur Aisyah</strong><small>NIP: 198705122010012004</small></td><td data-label="Nama pengguna">nur.aisyah</td><td data-label="Peran"><span class="badge badge-guru">Guru</span></td><td data-label="Tanggal daftar">17 Nov 2026</td><td data-label="Aksi" class="aksi-tabel"><button class="tombol tombol-kecil tombol-setuju" type="button">Setujui</button><button class="tombol tombol-kecil tombol-tolak" type="button">Tolak</button></td></tr>
+            <tr><td data-label="Nama lengkap"><strong>Rizal Maulana</strong><small>NIS: 10251 · X TKJ 2</small></td><td data-label="Nama pengguna">rizal.m</td><td data-label="Peran"><span class="badge badge-siswa">Siswa</span></td><td data-label="Tanggal daftar">17 Nov 2026</td><td data-label="Aksi" class="aksi-tabel"><button class="tombol tombol-kecil tombol-setuju" type="button">Setujui</button><button class="tombol tombol-kecil tombol-tolak" type="button">Tolak</button></td></tr>
+          </tbody>
+        </table></div>
+      </section>
+    </main>
+  </section>
+
+  <!-- HALAMAN KELOLA PENGGUNA -->
+  <section id="pengguna" class="layar layar-aplikasi peran-admin">
+    <aside class="sidebar">
+      <a href="#admin" class="brand-sidebar"><span class="logo-mini">S</span><span>SIPENTU<small>Panel administrator</small></span></a>
+      <nav class="menu-samping" aria-label="Menu admin">
+        <a href="#admin">▦ <span>Dashboard</span></a><a class="aktif" href="#pengguna">♙ <span>Kelola pengguna</span></a>
+        <a href="#admin">⚙ <span>Ubah kata sandi</span></a><a href="#login" class="menu-keluar">↪ <span>Keluar</span></a>
+      </nav>
+      <div class="sidebar-bawah">
+        <button class="tombol-tema" type="button" data-theme-toggle aria-label="Ganti ke tema gelap" title="Ganti tema">
+          <svg class="ikon-matahari" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path></svg>
+          <svg class="ikon-bulan" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 15.5A8.5 8.5 0 0 1 8.5 3.5 8.5 8.5 0 1 0 20.5 15.5Z"></path></svg>
+        </button>
+        <div class="profil-mini"><span class="avatar">RA</span><span><strong>Rizky Ananda</strong><small>Administrator</small></span></div>
+      </div>
+    </aside>
+    <main class="konten">
+      <header class="header-konten"><div><p class="eyebrow">ADMINISTRATOR / PENGGUNA</p><h1>Kelola pengguna</h1><p class="teks-redup">Atur akun siswa dan guru yang terdaftar.</p></div><button class="tombol tombol-utama" type="button">＋ Tambah pengguna</button></header>
+      <section class="panel">
+        <div class="filter-grid">
+          <div class="field"><label for="filter-cari">Cari pengguna</label><input id="filter-cari" type="search" placeholder="Nama atau nama pengguna"></div>
+          <div class="field"><label for="filter-peran">Peran</label><select id="filter-peran"><option>Semua peran</option><option>Siswa</option><option>Guru</option><option>Admin</option></select></div>
+          <div class="field"><label for="filter-status">Status</label><select id="filter-status"><option>Semua status</option><option>Aktif</option><option>Menunggu</option><option>Ditolak</option></select></div>
+          <button class="tombol tombol-utama tombol-filter" type="button">Terapkan</button>
+        </div>
+        <div class="panel-heading heading-tabel"><div><h2>Daftar pengguna</h2><p class="teks-redup">Menampilkan 4 dari 514 pengguna.</p></div></div>
+        <div class="tabel-wrap"><table><thead><tr><th>Nama</th><th>Nama pengguna</th><th>Peran</th><th>Status</th><th>Aksi</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Nama"><strong>Andi Saputra</strong><small>X TKJ 1 · NIS 10231</small></td><td data-label="Nama pengguna">andi_saputra</td><td data-label="Peran"><span class="badge badge-siswa">Siswa</span></td><td data-label="Status"><span class="badge badge-sudah">Aktif</span></td><td data-label="Aksi"><a href="#pengguna" class="aksi-link">Detail</a></td></tr>
+            <tr><td data-label="Nama"><strong>Dewi Puspitasari</strong><small>Guru Informatika</small></td><td data-label="Nama pengguna">dewi.p</td><td data-label="Peran"><span class="badge badge-guru">Guru</span></td><td data-label="Status"><span class="badge badge-sudah">Aktif</span></td><td data-label="Aksi"><a href="#pengguna" class="aksi-link">Detail</a></td></tr>
+            <tr><td data-label="Nama"><strong>Fajar Ramadhan</strong><small>X TKJ 1 · NIS 10246</small></td><td data-label="Nama pengguna">fajar.r</td><td data-label="Peran"><span class="badge badge-siswa">Siswa</span></td><td data-label="Status"><span class="badge badge-menunggu">Menunggu</span></td><td data-label="Aksi"><a href="#pengguna" class="aksi-link">Tinjau</a></td></tr>
+            <tr><td data-label="Nama"><strong>Nur Aisyah</strong><small>Guru Bahasa Indonesia</small></td><td data-label="Nama pengguna">nur.aisyah</td><td data-label="Peran"><span class="badge badge-guru">Guru</span></td><td data-label="Status"><span class="badge badge-ditolak">Ditolak</span></td><td data-label="Aksi"><a href="#pengguna" class="aksi-link">Detail</a></td></tr>
+          </tbody>
+        </table></div>
+        <div class="pagination"><span>Menampilkan 1–4 dari 514 pengguna</span><div><button class="tombol tombol-netral tombol-kecil" type="button" disabled>Sebelumnya</button><button class="tombol tombol-netral tombol-kecil" type="button">Berikutnya</button></div></div>
+      </section>
+    </main>
+  </section>
+
+  <!-- Tujuan tautan menu contoh: tetap berada pada halaman dashboard karena ini prototipe tampilan. -->
+  <section id="siswa-riwayat" class="layar layar-pesan"><div class="pesan-tengah"><h1>Riwayat tugas</h1><p>Bagian riwayat tugas merupakan contoh navigasi prototipe.</p><a href="#siswa" class="tombol tombol-utama">Kembali ke dashboard</a></div></section>
+  <section id="siswa-notifikasi" class="layar layar-pesan"><div class="pesan-tengah"><h1>Notifikasi</h1><p>Anda memiliki 2 pemberitahuan tugas baru.</p><a href="#siswa" class="tombol tombol-utama">Kembali ke dashboard</a></div></section>
+  <section id="siswa-sandi" class="layar layar-pesan"><div class="pesan-tengah"><h1>Ubah kata sandi</h1><p>Formulir pengubahan kata sandi dapat dikembangkan pada tahap berikutnya.</p><a href="#siswa" class="tombol tombol-utama">Kembali ke dashboard</a></div></section>
+
+  <!-- JavaScript hanya untuk tombol tema dan lihat/sembunyikan kata sandi. -->
   <script>
-    var pw = document.getElementById('password');
-    document.getElementById('togglePw').addEventListener('click', function () {
-      pw.type = pw.type === 'password' ? 'text' : 'password';
+    document.querySelectorAll("[data-password-toggle]").forEach(function (tombol) {
+      tombol.addEventListener("click", function () {
+        const input = document.getElementById(tombol.getAttribute("aria-controls"));
+        const terlihat = input.type === "password";
+        input.type = terlihat ? "text" : "password";
+        tombol.textContent = terlihat ? "Sembunyikan" : "Lihat";
+        tombol.setAttribute("aria-pressed", String(terlihat));
+      });
     });
+
+    document.querySelectorAll("[data-theme-toggle]").forEach(function (tombol) {
+      tombol.addEventListener("click", function () {
+        const temaBaru = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", temaBaru);
+        try {
+          localStorage.setItem("sipentu-tema", temaBaru);
+        } catch (error) {
+          /* Tema tetap berubah untuk sesi ini meskipun penyimpanan tidak tersedia. */
+        }
+        perbaruiLabelTema();
+      });
+    });
+
+    function perbaruiLabelTema() {
+      const gelap = document.documentElement.getAttribute("data-theme") === "dark";
+      document.querySelectorAll("[data-theme-toggle]").forEach(function (tombol) {
+        tombol.setAttribute("aria-label", gelap ? "Ganti ke tema terang" : "Ganti ke tema gelap");
+        tombol.setAttribute("title", gelap ? "Ganti ke tema terang" : "Ganti ke tema gelap");
+      });
+    }
+    perbaruiLabelTema();
   </script>
 </body>
 </html>
